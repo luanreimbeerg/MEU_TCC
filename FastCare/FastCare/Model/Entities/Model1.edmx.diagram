@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ea92148c077440ef9b8fcda284efcf6c" Name="Diagram1" ZoomLevel="58">
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_car_ponto" Width="1.5" PointX="11" PointY="6.5" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_cliente" Width="1.5" PointX="0.75" PointY="13.375" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_compra" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_conta" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_estoque" Width="1.5" PointX="5.25" PointY="1.875" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_fornecedor" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_funcionario" Width="1.5" PointX="8.75" PointY="2.625" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_login" Width="1.5" PointX="8.75" PointY="10.75" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_pagamento" Width="1.5" PointX="11" PointY="1.25" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_prestador" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_servico" Width="1.5" PointX="6" PointY="8" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.tb_suprimento" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="db_a4e410_fastModel.vw_fluxo_caixa" Width="1.5" PointX="10.75" PointY="10.75" />
+        <AssociationConnector Association="db_a4e410_fastModel.tb_car_ponto_ibfk_1" />
+        <AssociationConnector Association="db_a4e410_fastModel.tb_compra_ibfk_1" />
+        <AssociationConnector Association="db_a4e410_fastModel.tb_servico_ibfk_1" />
+        <AssociationConnector Association="db_a4e410_fastModel.tb_compra_ibfk_2" />
+        <AssociationConnector Association="db_a4e410_fastModel.tb_estoque_ibfk_1" />
+        <AssociationConnector Association="db_a4e410_fastModel.tb_suprimento_ibfk_1" />
+        <AssociationConnector Association="db_a4e410_fastModel.tb_pagamento_ibfk_1" />
+        <AssociationConnector Association="db_a4e410_fastModel.tb_servico_ibfk_2" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

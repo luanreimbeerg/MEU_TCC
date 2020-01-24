@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db_a4e410_fastModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_car_ponto">
+          <Key>
+            <PropertyRef Name="id_car_ponto" />
+          </Key>
+          <Property Name="id_car_ponto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_funcionario" Type="int" />
+          <Property Name="dt_dia" Type="date" />
+          <Property Name="hr_entrada" Type="time" Precision="0" />
+          <Property Name="hr_almoco" Type="time" Precision="0" />
+          <Property Name="hr_volta" Type="time" Precision="0" />
+          <Property Name="hr_saida" Type="time" Precision="0" />
+          <Property Name="hr_extra" Type="time" Precision="0" />
+          <Property Name="hr_saidaextra" Type="time" Precision="0" />
+          <Property Name="qt_extra" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_login" Type="int" />
+          <Property Name="nm_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dt_nasc" Type="date" Nullable="false" />
+          <Property Name="ds_rg" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ds_cpf" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_cliente" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="nu_cliente" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ds_cep" Type="varchar" MaxLength="45" />
+          <Property Name="ds_tel" Type="varchar" MaxLength="45" />
+          <Property Name="ds_cel" Type="varchar" MaxLength="45" />
+          <Property Name="ds_email" Type="varchar" MaxLength="45" />
+          <Property Name="uf_estado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ds_genero" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_compra">
+          <Key>
+            <PropertyRef Name="id_compra" />
+          </Key>
+          <Property Name="id_compra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_prestador" Type="int" />
+          <Property Name="id_cliente" Type="int" />
+          <Property Name="vl_compra" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="dt_compra" Type="date" />
+          <Property Name="ds_setor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ds_avaliacao" Type="varchar" MaxLength="200" />
+          <Property Name="qt_estrela" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_conta">
+          <Key>
+            <PropertyRef Name="id_conta" />
+          </Key>
+          <Property Name="id_conta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_conta" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="dt_vencimento" Type="date" />
+          <Property Name="dt_pagamento" Type="date" />
+          <Property Name="ds_tipo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="vl_conta" Type="decimal" Precision="50" Scale="2" Nullable="false" />
+          <Property Name="bl_situacao" Type="bool" />
+        </EntityType>
+        <EntityType Name="tb_estoque">
+          <Key>
+            <PropertyRef Name="id_estoque" />
+          </Key>
+          <Property Name="id_estoque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_suprimento" Type="int" Nullable="false" />
+          <Property Name="qt_produtos" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_fornecedor">
+          <Key>
+            <PropertyRef Name="id_fornecedor" />
+          </Key>
+          <Property Name="id_fornecedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_forn" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ds_cep" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_forn" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="nu_forn" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ds_tel" Type="varchar" MaxLength="45" />
+          <Property Name="ds_cel" Type="varchar" MaxLength="45" />
+          <Property Name="ds_email" Type="varchar" MaxLength="45" />
+          <Property Name="ds_cnpj" Type="varchar" MaxLength="45" />
+          <Property Name="ds_cpf" Type="varchar" MaxLength="45" />
+          <Property Name="uf_estado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="insc_estadual" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_funcionario">
+          <Key>
+            <PropertyRef Name="id_funcionario" />
+          </Key>
+          <Property Name="id_funcionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_funcionario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dt_nasc" Type="date" Nullable="false" />
+          <Property Name="ds_rg" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ds_cpf" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="end_funcionario" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="nu_funcionario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ds_cep" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ds_tel" Type="varchar" MaxLength="50" />
+          <Property Name="ds_cel" Type="varchar" MaxLength="50" />
+          <Property Name="ds_email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nm_cargo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="qt_salario" Type="decimal" Precision="50" Scale="2" Nullable="false" />
+          <Property Name="ds_setor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dt_contratacao" Type="date" Nullable="false" />
+          <Property Name="ds_genero" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="uf_estado" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="est_civil" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="bl_vt" Type="bool" />
+          <Property Name="vl_vt" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="bl_va" Type="bool" />
+          <Property Name="vl_va" Type="decimal" Precision="50" Scale="2" />
+        </EntityType>
+        <EntityType Name="tb_login">
+          <Key>
+            <PropertyRef Name="id_login" />
+          </Key>
+          <Property Name="id_login" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nm_usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ds_senha" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ds_tipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="img_usuario" Type="longblob" />
+        </EntityType>
+        <EntityType Name="tb_pagamento">
+          <Key>
+            <PropertyRef Name="id_pagamento" />
+          </Key>
+          <Property Name="id_pagamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_funcionario" Type="int" Nullable="false" />
+          <Property Name="nm_funcionario" Type="varchar" MaxLength="50" />
+          <Property Name="função" Type="varchar" MaxLength="50" />
+          <Property Name="dt_mes" Type="date" />
+          <Property Name="salario" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="salario_base" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="INSS" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="FGTS" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="VA" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="VT" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="nu_falta" Type="int" />
+          <Property Name="desc_falta" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="total_desconto" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="valor_liquido" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="horasextra" Type="int" />
+          <Property Name="horaextraareceber" Type="decimal" Precision="50" Scale="2" />
+        </EntityType>
+        <EntityType Name="tb_prestador">
+          <Key>
+            <PropertyRef Name="id_prestador" />
+          </Key>
+          <Property Name="id_prestador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_login" Type="int" />
+          <Property Name="nm_prestador" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dt_nasc" Type="date" Nullable="false" />
+          <Property Name="ds_rg" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="ds_cpf" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="end_prestador" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="nu_prestador" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="ds_cep" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="ds_tel" Type="char" MaxLength="13" />
+          <Property Name="ds_cel" Type="char" MaxLength="14" />
+          <Property Name="ds_email" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="nm_cargo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ds_genero" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="bt_ativo" Type="bool" />
+          <Property Name="uf_estado" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_servico">
+          <Key>
+            <PropertyRef Name="id_servico" />
+          </Key>
+          <Property Name="id_servico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_prestador" Type="int" />
+          <Property Name="id_cliente" Type="int" />
+          <Property Name="vl_servico" Type="decimal" Precision="50" Scale="2" />
+          <Property Name="dt_servico" Type="date" />
+          <Property Name="ds_setor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="qt_estrela" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_suprimento">
+          <Key>
+            <PropertyRef Name="id_suprimento" />
+          </Key>
+          <Property Name="id_suprimento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_fornecedor" Type="int" Nullable="false" />
+          <Property Name="nm_produto" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="qt_produtos" Type="int" Nullable="false" />
+          <Property Name="vl_preco" Type="decimal" Precision="50" Scale="2" Nullable="false" />
+          <Property Name="dt_compra" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.db_a4e410_fast.vw_fluxo_caixa' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_fluxo_caixa">
+          <Key>
+            <PropertyRef Name="tp_operacao" />
+          </Key>
+          <Property Name="dt_pagamento" Type="datetime" Precision="0" />
+          <Property Name="vl_operacao" Type="decimal" Precision="65" Scale="2" />
+          <Property Name="tp_operacao" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <Association Name="tb_car_ponto_ibfk_1">
+          <End Role="tb_funcionario" Type="Self.tb_funcionario" Multiplicity="0..1" />
+          <End Role="tb_car_ponto" Type="Self.tb_car_ponto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_funcionario">
+              <PropertyRef Name="id_funcionario" />
+            </Principal>
+            <Dependent Role="tb_car_ponto">
+              <PropertyRef Name="id_funcionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_compra_ibfk_1">
+          <End Role="tb_cliente" Type="Self.tb_cliente" Multiplicity="0..1" />
+          <End Role="tb_compra" Type="Self.tb_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="tb_compra">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_compra_ibfk_2">
+          <End Role="tb_prestador" Type="Self.tb_prestador" Multiplicity="0..1" />
+          <End Role="tb_compra" Type="Self.tb_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_prestador">
+              <PropertyRef Name="id_prestador" />
+            </Principal>
+            <Dependent Role="tb_compra">
+              <PropertyRef Name="id_prestador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_estoque_ibfk_1">
+          <End Role="tb_suprimento" Type="Self.tb_suprimento" Multiplicity="1" />
+          <End Role="tb_estoque" Type="Self.tb_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_suprimento">
+              <PropertyRef Name="id_suprimento" />
+            </Principal>
+            <Dependent Role="tb_estoque">
+              <PropertyRef Name="id_suprimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_pagamento_ibfk_1">
+          <End Role="tb_funcionario" Type="Self.tb_funcionario" Multiplicity="1" />
+          <End Role="tb_pagamento" Type="Self.tb_pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_funcionario">
+              <PropertyRef Name="id_funcionario" />
+            </Principal>
+            <Dependent Role="tb_pagamento">
+              <PropertyRef Name="id_funcionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_servico_ibfk_1">
+          <End Role="tb_cliente" Type="Self.tb_cliente" Multiplicity="0..1" />
+          <End Role="tb_servico" Type="Self.tb_servico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="tb_servico">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_servico_ibfk_2">
+          <End Role="tb_prestador" Type="Self.tb_prestador" Multiplicity="0..1" />
+          <End Role="tb_servico" Type="Self.tb_servico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_prestador">
+              <PropertyRef Name="id_prestador" />
+            </Principal>
+            <Dependent Role="tb_servico">
+              <PropertyRef Name="id_prestador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_suprimento_ibfk_1">
+          <End Role="tb_fornecedor" Type="Self.tb_fornecedor" Multiplicity="1" />
+          <End Role="tb_suprimento" Type="Self.tb_suprimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_fornecedor">
+              <PropertyRef Name="id_fornecedor" />
+            </Principal>
+            <Dependent Role="tb_suprimento">
+              <PropertyRef Name="id_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_a4e410_fastModelStoreContainer">
+          <EntitySet Name="tb_car_ponto" EntityType="Self.tb_car_ponto" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_cliente" EntityType="Self.tb_cliente" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_compra" EntityType="Self.tb_compra" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_conta" EntityType="Self.tb_conta" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_estoque" EntityType="Self.tb_estoque" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_fornecedor" EntityType="Self.tb_fornecedor" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_funcionario" EntityType="Self.tb_funcionario" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_login" EntityType="Self.tb_login" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_pagamento" EntityType="Self.tb_pagamento" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_prestador" EntityType="Self.tb_prestador" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_servico" EntityType="Self.tb_servico" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="tb_suprimento" EntityType="Self.tb_suprimento" Schema="db_a4e410_fast" store:Type="Tables" />
+          <EntitySet Name="vw_fluxo_caixa" EntityType="Self.vw_fluxo_caixa" store:Type="Views" store:Schema="db_a4e410_fast">
+            <DefiningQuery>SELECT
+`vw_fluxo_caixa`.`dt_pagamento`, 
+`vw_fluxo_caixa`.`vl_operacao`, 
+`vw_fluxo_caixa`.`tp_operacao`
+FROM `vw_fluxo_caixa` AS `vw_fluxo_caixa`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="tb_car_ponto_ibfk_1" Association="Self.tb_car_ponto_ibfk_1">
+            <End Role="tb_funcionario" EntitySet="tb_funcionario" />
+            <End Role="tb_car_ponto" EntitySet="tb_car_ponto" />
+          </AssociationSet>
+          <AssociationSet Name="tb_compra_ibfk_1" Association="Self.tb_compra_ibfk_1">
+            <End Role="tb_cliente" EntitySet="tb_cliente" />
+            <End Role="tb_compra" EntitySet="tb_compra" />
+          </AssociationSet>
+          <AssociationSet Name="tb_compra_ibfk_2" Association="Self.tb_compra_ibfk_2">
+            <End Role="tb_prestador" EntitySet="tb_prestador" />
+            <End Role="tb_compra" EntitySet="tb_compra" />
+          </AssociationSet>
+          <AssociationSet Name="tb_estoque_ibfk_1" Association="Self.tb_estoque_ibfk_1">
+            <End Role="tb_suprimento" EntitySet="tb_suprimento" />
+            <End Role="tb_estoque" EntitySet="tb_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="tb_pagamento_ibfk_1" Association="Self.tb_pagamento_ibfk_1">
+            <End Role="tb_funcionario" EntitySet="tb_funcionario" />
+            <End Role="tb_pagamento" EntitySet="tb_pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="tb_servico_ibfk_1" Association="Self.tb_servico_ibfk_1">
+            <End Role="tb_cliente" EntitySet="tb_cliente" />
+            <End Role="tb_servico" EntitySet="tb_servico" />
+          </AssociationSet>
+          <AssociationSet Name="tb_servico_ibfk_2" Association="Self.tb_servico_ibfk_2">
+            <End Role="tb_prestador" EntitySet="tb_prestador" />
+            <End Role="tb_servico" EntitySet="tb_servico" />
+          </AssociationSet>
+          <AssociationSet Name="tb_suprimento_ibfk_1" Association="Self.tb_suprimento_ibfk_1">
+            <End Role="tb_fornecedor" EntitySet="tb_fornecedor" />
+            <End Role="tb_suprimento" EntitySet="tb_suprimento" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_a4e410_fastModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Fast_CareEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_car_ponto" EntityType="db_a4e410_fastModel.tb_car_ponto" />
+          <EntitySet Name="tb_cliente" EntityType="db_a4e410_fastModel.tb_cliente" />
+          <EntitySet Name="tb_compra" EntityType="db_a4e410_fastModel.tb_compra" />
+          <EntitySet Name="tb_conta" EntityType="db_a4e410_fastModel.tb_conta" />
+          <EntitySet Name="tb_estoque" EntityType="db_a4e410_fastModel.tb_estoque" />
+          <EntitySet Name="tb_fornecedor" EntityType="db_a4e410_fastModel.tb_fornecedor" />
+          <EntitySet Name="tb_funcionario" EntityType="db_a4e410_fastModel.tb_funcionario" />
+          <EntitySet Name="tb_login" EntityType="db_a4e410_fastModel.tb_login" />
+          <EntitySet Name="tb_pagamento" EntityType="db_a4e410_fastModel.tb_pagamento" />
+          <EntitySet Name="tb_prestador" EntityType="db_a4e410_fastModel.tb_prestador" />
+          <EntitySet Name="tb_servico" EntityType="db_a4e410_fastModel.tb_servico" />
+          <EntitySet Name="tb_suprimento" EntityType="db_a4e410_fastModel.tb_suprimento" />
+          <EntitySet Name="vw_fluxo_caixa" EntityType="db_a4e410_fastModel.vw_fluxo_caixa" />
+          <AssociationSet Name="tb_car_ponto_ibfk_1" Association="db_a4e410_fastModel.tb_car_ponto_ibfk_1">
+            <End Role="tb_funcionario" EntitySet="tb_funcionario" />
+            <End Role="tb_car_ponto" EntitySet="tb_car_ponto" />
+          </AssociationSet>
+          <AssociationSet Name="tb_compra_ibfk_1" Association="db_a4e410_fastModel.tb_compra_ibfk_1">
+            <End Role="tb_cliente" EntitySet="tb_cliente" />
+            <End Role="tb_compra" EntitySet="tb_compra" />
+          </AssociationSet>
+          <AssociationSet Name="tb_servico_ibfk_1" Association="db_a4e410_fastModel.tb_servico_ibfk_1">
+            <End Role="tb_cliente" EntitySet="tb_cliente" />
+            <End Role="tb_servico" EntitySet="tb_servico" />
+          </AssociationSet>
+          <AssociationSet Name="tb_compra_ibfk_2" Association="db_a4e410_fastModel.tb_compra_ibfk_2">
+            <End Role="tb_prestador" EntitySet="tb_prestador" />
+            <End Role="tb_compra" EntitySet="tb_compra" />
+          </AssociationSet>
+          <AssociationSet Name="tb_estoque_ibfk_1" Association="db_a4e410_fastModel.tb_estoque_ibfk_1">
+            <End Role="tb_suprimento" EntitySet="tb_suprimento" />
+            <End Role="tb_estoque" EntitySet="tb_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="tb_suprimento_ibfk_1" Association="db_a4e410_fastModel.tb_suprimento_ibfk_1">
+            <End Role="tb_fornecedor" EntitySet="tb_fornecedor" />
+            <End Role="tb_suprimento" EntitySet="tb_suprimento" />
+          </AssociationSet>
+          <AssociationSet Name="tb_pagamento_ibfk_1" Association="db_a4e410_fastModel.tb_pagamento_ibfk_1">
+            <End Role="tb_funcionario" EntitySet="tb_funcionario" />
+            <End Role="tb_pagamento" EntitySet="tb_pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="tb_servico_ibfk_2" Association="db_a4e410_fastModel.tb_servico_ibfk_2">
+            <End Role="tb_prestador" EntitySet="tb_prestador" />
+            <End Role="tb_servico" EntitySet="tb_servico" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tb_car_ponto">
+          <Key>
+            <PropertyRef Name="id_car_ponto" />
+          </Key>
+          <Property Name="id_car_ponto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_funcionario" Type="Int32" />
+          <Property Name="dt_dia" Type="DateTime" />
+          <Property Name="hr_entrada" Type="Time" />
+          <Property Name="hr_almoco" Type="Time" />
+          <Property Name="hr_volta" Type="Time" />
+          <Property Name="hr_saida" Type="Time" />
+          <Property Name="hr_extra" Type="Time" />
+          <Property Name="hr_saidaextra" Type="Time" />
+          <Property Name="qt_extra" Type="Int32" />
+          <NavigationProperty Name="tb_funcionario" Relationship="db_a4e410_fastModel.tb_car_ponto_ibfk_1" FromRole="tb_car_ponto" ToRole="tb_funcionario" />
+        </EntityType>
+        <EntityType Name="tb_cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_login" Type="Int32" />
+          <Property Name="nm_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dt_nasc" Type="DateTime" Nullable="false" />
+          <Property Name="ds_rg" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cpf" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="end_cliente" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nu_cliente" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cep" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_tel" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cel" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="uf_estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_genero" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_compra" Relationship="db_a4e410_fastModel.tb_compra_ibfk_1" FromRole="tb_cliente" ToRole="tb_compra" />
+          <NavigationProperty Name="tb_servico" Relationship="db_a4e410_fastModel.tb_servico_ibfk_1" FromRole="tb_cliente" ToRole="tb_servico" />
+        </EntityType>
+        <EntityType Name="tb_compra">
+          <Key>
+            <PropertyRef Name="id_compra" />
+          </Key>
+          <Property Name="id_compra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_prestador" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" />
+          <Property Name="vl_compra" Type="Decimal" />
+          <Property Name="dt_compra" Type="DateTime" />
+          <Property Name="ds_setor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ds_avaliacao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="qt_estrela" Type="Int32" />
+          <NavigationProperty Name="tb_cliente" Relationship="db_a4e410_fastModel.tb_compra_ibfk_1" FromRole="tb_compra" ToRole="tb_cliente" />
+          <NavigationProperty Name="tb_prestador" Relationship="db_a4e410_fastModel.tb_compra_ibfk_2" FromRole="tb_compra" ToRole="tb_prestador" />
+        </EntityType>
+        <EntityType Name="tb_conta">
+          <Key>
+            <PropertyRef Name="id_conta" />
+          </Key>
+          <Property Name="id_conta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_conta" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="dt_vencimento" Type="DateTime" />
+          <Property Name="dt_pagamento" Type="DateTime" />
+          <Property Name="ds_tipo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="vl_conta" Type="Decimal" Nullable="false" />
+          <Property Name="bl_situacao" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tb_estoque">
+          <Key>
+            <PropertyRef Name="id_estoque" />
+          </Key>
+          <Property Name="id_estoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_suprimento" Type="Int32" Nullable="false" />
+          <Property Name="qt_produtos" Type="Int32" />
+          <NavigationProperty Name="tb_suprimento" Relationship="db_a4e410_fastModel.tb_estoque_ibfk_1" FromRole="tb_estoque" ToRole="tb_suprimento" />
+        </EntityType>
+        <EntityType Name="tb_fornecedor">
+          <Key>
+            <PropertyRef Name="id_fornecedor" />
+          </Key>
+          <Property Name="id_fornecedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_forn" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cep" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="end_forn" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nu_forn" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_tel" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cel" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cnpj" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cpf" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="uf_estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="insc_estadual" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_suprimento" Relationship="db_a4e410_fastModel.tb_suprimento_ibfk_1" FromRole="tb_fornecedor" ToRole="tb_suprimento" />
+        </EntityType>
+        <EntityType Name="tb_funcionario">
+          <Key>
+            <PropertyRef Name="id_funcionario" />
+          </Key>
+          <Property Name="id_funcionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_funcionario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dt_nasc" Type="DateTime" Nullable="false" />
+          <Property Name="ds_rg" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cpf" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="end_funcionario" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nu_funcionario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cep" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nm_cargo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qt_salario" Type="Decimal" Nullable="false" />
+          <Property Name="ds_setor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dt_contratacao" Type="DateTime" Nullable="false" />
+          <Property Name="ds_genero" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="uf_estado" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="est_civil" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="bl_vt" Type="Boolean" />
+          <Property Name="vl_vt" Type="Decimal" />
+          <Property Name="bl_va" Type="Boolean" />
+          <Property Name="vl_va" Type="Decimal" />
+          <NavigationProperty Name="tb_car_ponto" Relationship="db_a4e410_fastModel.tb_car_ponto_ibfk_1" FromRole="tb_funcionario" ToRole="tb_car_ponto" />
+          <NavigationProperty Name="tb_pagamento" Relationship="db_a4e410_fastModel.tb_pagamento_ibfk_1" FromRole="tb_funcionario" ToRole="tb_pagamento" />
+        </EntityType>
+        <EntityType Name="tb_login">
+          <Key>
+            <PropertyRef Name="id_login" />
+          </Key>
+          <Property Name="id_login" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nm_usuario" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ds_senha" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ds_tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="img_usuario" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tb_pagamento">
+          <Key>
+            <PropertyRef Name="id_pagamento" />
+          </Key>
+          <Property Name="id_pagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_funcionario" Type="Int32" Nullable="false" />
+          <Property Name="nm_funcionario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="função" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dt_mes" Type="DateTime" />
+          <Property Name="salario" Type="Decimal" />
+          <Property Name="salario_base" Type="Decimal" />
+          <Property Name="INSS" Type="Decimal" />
+          <Property Name="FGTS" Type="Decimal" />
+          <Property Name="VA" Type="Decimal" />
+          <Property Name="VT" Type="Decimal" />
+          <Property Name="nu_falta" Type="Int32" />
+          <Property Name="desc_falta" Type="Decimal" />
+          <Property Name="total_desconto" Type="Decimal" />
+          <Property Name="valor_liquido" Type="Decimal" />
+          <Property Name="horasextra" Type="Int32" />
+          <Property Name="horaextraareceber" Type="Decimal" />
+          <NavigationProperty Name="tb_funcionario" Relationship="db_a4e410_fastModel.tb_pagamento_ibfk_1" FromRole="tb_pagamento" ToRole="tb_funcionario" />
+        </EntityType>
+        <EntityType Name="tb_prestador">
+          <Key>
+            <PropertyRef Name="id_prestador" />
+          </Key>
+          <Property Name="id_prestador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_login" Type="Int32" />
+          <Property Name="nm_prestador" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dt_nasc" Type="DateTime" Nullable="false" />
+          <Property Name="ds_rg" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cpf" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="end_prestador" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nu_prestador" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cep" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="ds_tel" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="ds_cel" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="ds_email" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nm_cargo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ds_genero" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="bt_ativo" Type="Boolean" />
+          <Property Name="uf_estado" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_compra" Relationship="db_a4e410_fastModel.tb_compra_ibfk_2" FromRole="tb_prestador" ToRole="tb_compra" />
+          <NavigationProperty Name="tb_servico" Relationship="db_a4e410_fastModel.tb_servico_ibfk_2" FromRole="tb_prestador" ToRole="tb_servico" />
+        </EntityType>
+        <EntityType Name="tb_servico">
+          <Key>
+            <PropertyRef Name="id_servico" />
+          </Key>
+          <Property Name="id_servico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_prestador" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" />
+          <Property Name="vl_servico" Type="Decimal" />
+          <Property Name="dt_servico" Type="DateTime" />
+          <Property Name="ds_setor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="qt_estrela" Type="Int32" />
+          <NavigationProperty Name="tb_cliente" Relationship="db_a4e410_fastModel.tb_servico_ibfk_1" FromRole="tb_servico" ToRole="tb_cliente" />
+          <NavigationProperty Name="tb_prestador" Relationship="db_a4e410_fastModel.tb_servico_ibfk_2" FromRole="tb_servico" ToRole="tb_prestador" />
+        </EntityType>
+        <EntityType Name="tb_suprimento">
+          <Key>
+            <PropertyRef Name="id_suprimento" />
+          </Key>
+          <Property Name="id_suprimento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_fornecedor" Type="Int32" Nullable="false" />
+          <Property Name="nm_produto" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="qt_produtos" Type="Int32" Nullable="false" />
+          <Property Name="vl_preco" Type="Decimal" Nullable="false" />
+          <Property Name="dt_compra" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="tb_estoque" Relationship="db_a4e410_fastModel.tb_estoque_ibfk_1" FromRole="tb_suprimento" ToRole="tb_estoque" />
+          <NavigationProperty Name="tb_fornecedor" Relationship="db_a4e410_fastModel.tb_suprimento_ibfk_1" FromRole="tb_suprimento" ToRole="tb_fornecedor" />
+        </EntityType>
+        <EntityType Name="vw_fluxo_caixa">
+          <Key>
+            <PropertyRef Name="tp_operacao" />
+          </Key>
+          <Property Name="dt_pagamento" Type="DateTime" />
+          <Property Name="vl_operacao" Type="Decimal" />
+          <Property Name="tp_operacao" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="tb_car_ponto_ibfk_1">
+          <End Type="db_a4e410_fastModel.tb_funcionario" Role="tb_funcionario" Multiplicity="0..1" />
+          <End Type="db_a4e410_fastModel.tb_car_ponto" Role="tb_car_ponto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_funcionario">
+              <PropertyRef Name="id_funcionario" />
+            </Principal>
+            <Dependent Role="tb_car_ponto">
+              <PropertyRef Name="id_funcionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_compra_ibfk_1">
+          <End Type="db_a4e410_fastModel.tb_cliente" Role="tb_cliente" Multiplicity="0..1" />
+          <End Type="db_a4e410_fastModel.tb_compra" Role="tb_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="tb_compra">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_servico_ibfk_1">
+          <End Type="db_a4e410_fastModel.tb_cliente" Role="tb_cliente" Multiplicity="0..1" />
+          <End Type="db_a4e410_fastModel.tb_servico" Role="tb_servico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="tb_servico">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_compra_ibfk_2">
+          <End Type="db_a4e410_fastModel.tb_prestador" Role="tb_prestador" Multiplicity="0..1" />
+          <End Type="db_a4e410_fastModel.tb_compra" Role="tb_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_prestador">
+              <PropertyRef Name="id_prestador" />
+            </Principal>
+            <Dependent Role="tb_compra">
+              <PropertyRef Name="id_prestador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_estoque_ibfk_1">
+          <End Type="db_a4e410_fastModel.tb_suprimento" Role="tb_suprimento" Multiplicity="1" />
+          <End Type="db_a4e410_fastModel.tb_estoque" Role="tb_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_suprimento">
+              <PropertyRef Name="id_suprimento" />
+            </Principal>
+            <Dependent Role="tb_estoque">
+              <PropertyRef Name="id_suprimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_suprimento_ibfk_1">
+          <End Type="db_a4e410_fastModel.tb_fornecedor" Role="tb_fornecedor" Multiplicity="1" />
+          <End Type="db_a4e410_fastModel.tb_suprimento" Role="tb_suprimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_fornecedor">
+              <PropertyRef Name="id_fornecedor" />
+            </Principal>
+            <Dependent Role="tb_suprimento">
+              <PropertyRef Name="id_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_pagamento_ibfk_1">
+          <End Type="db_a4e410_fastModel.tb_funcionario" Role="tb_funcionario" Multiplicity="1" />
+          <End Type="db_a4e410_fastModel.tb_pagamento" Role="tb_pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_funcionario">
+              <PropertyRef Name="id_funcionario" />
+            </Principal>
+            <Dependent Role="tb_pagamento">
+              <PropertyRef Name="id_funcionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_servico_ibfk_2">
+          <End Type="db_a4e410_fastModel.tb_prestador" Role="tb_prestador" Multiplicity="0..1" />
+          <End Type="db_a4e410_fastModel.tb_servico" Role="tb_servico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_prestador">
+              <PropertyRef Name="id_prestador" />
+            </Principal>
+            <Dependent Role="tb_servico">
+              <PropertyRef Name="id_prestador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_a4e410_fastModelStoreContainer" CdmEntityContainer="Fast_CareEntities">
+          <EntitySetMapping Name="tb_car_ponto">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_car_ponto">
+              <MappingFragment StoreEntitySet="tb_car_ponto">
+                <ScalarProperty Name="qt_extra" ColumnName="qt_extra" />
+                <ScalarProperty Name="hr_saidaextra" ColumnName="hr_saidaextra" />
+                <ScalarProperty Name="hr_extra" ColumnName="hr_extra" />
+                <ScalarProperty Name="hr_saida" ColumnName="hr_saida" />
+                <ScalarProperty Name="hr_volta" ColumnName="hr_volta" />
+                <ScalarProperty Name="hr_almoco" ColumnName="hr_almoco" />
+                <ScalarProperty Name="hr_entrada" ColumnName="hr_entrada" />
+                <ScalarProperty Name="dt_dia" ColumnName="dt_dia" />
+                <ScalarProperty Name="id_funcionario" ColumnName="id_funcionario" />
+                <ScalarProperty Name="id_car_ponto" ColumnName="id_car_ponto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_cliente">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_cliente">
+              <MappingFragment StoreEntitySet="tb_cliente">
+                <ScalarProperty Name="ds_genero" ColumnName="ds_genero" />
+                <ScalarProperty Name="uf_estado" ColumnName="uf_estado" />
+                <ScalarProperty Name="ds_email" ColumnName="ds_email" />
+                <ScalarProperty Name="ds_cel" ColumnName="ds_cel" />
+                <ScalarProperty Name="ds_tel" ColumnName="ds_tel" />
+                <ScalarProperty Name="ds_cep" ColumnName="ds_cep" />
+                <ScalarProperty Name="nu_cliente" ColumnName="nu_cliente" />
+                <ScalarProperty Name="end_cliente" ColumnName="end_cliente" />
+                <ScalarProperty Name="ds_cpf" ColumnName="ds_cpf" />
+                <ScalarProperty Name="ds_rg" ColumnName="ds_rg" />
+                <ScalarProperty Name="dt_nasc" ColumnName="dt_nasc" />
+                <ScalarProperty Name="nm_cliente" ColumnName="nm_cliente" />
+                <ScalarProperty Name="id_login" ColumnName="id_login" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_compra">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_compra">
+              <MappingFragment StoreEntitySet="tb_compra">
+                <ScalarProperty Name="qt_estrela" ColumnName="qt_estrela" />
+                <ScalarProperty Name="ds_avaliacao" ColumnName="ds_avaliacao" />
+                <ScalarProperty Name="ds_setor" ColumnName="ds_setor" />
+                <ScalarProperty Name="dt_compra" ColumnName="dt_compra" />
+                <ScalarProperty Name="vl_compra" ColumnName="vl_compra" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_prestador" ColumnName="id_prestador" />
+                <ScalarProperty Name="id_compra" ColumnName="id_compra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_conta">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_conta">
+              <MappingFragment StoreEntitySet="tb_conta">
+                <ScalarProperty Name="bl_situacao" ColumnName="bl_situacao" />
+                <ScalarProperty Name="vl_conta" ColumnName="vl_conta" />
+                <ScalarProperty Name="ds_tipo" ColumnName="ds_tipo" />
+                <ScalarProperty Name="dt_pagamento" ColumnName="dt_pagamento" />
+                <ScalarProperty Name="dt_vencimento" ColumnName="dt_vencimento" />
+                <ScalarProperty Name="nm_conta" ColumnName="nm_conta" />
+                <ScalarProperty Name="id_conta" ColumnName="id_conta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_estoque">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_estoque">
+              <MappingFragment StoreEntitySet="tb_estoque">
+                <ScalarProperty Name="qt_produtos" ColumnName="qt_produtos" />
+                <ScalarProperty Name="id_suprimento" ColumnName="id_suprimento" />
+                <ScalarProperty Name="id_estoque" ColumnName="id_estoque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_fornecedor">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_fornecedor">
+              <MappingFragment StoreEntitySet="tb_fornecedor">
+                <ScalarProperty Name="insc_estadual" ColumnName="insc_estadual" />
+                <ScalarProperty Name="uf_estado" ColumnName="uf_estado" />
+                <ScalarProperty Name="ds_cpf" ColumnName="ds_cpf" />
+                <ScalarProperty Name="ds_cnpj" ColumnName="ds_cnpj" />
+                <ScalarProperty Name="ds_email" ColumnName="ds_email" />
+                <ScalarProperty Name="ds_cel" ColumnName="ds_cel" />
+                <ScalarProperty Name="ds_tel" ColumnName="ds_tel" />
+                <ScalarProperty Name="nu_forn" ColumnName="nu_forn" />
+                <ScalarProperty Name="end_forn" ColumnName="end_forn" />
+                <ScalarProperty Name="ds_cep" ColumnName="ds_cep" />
+                <ScalarProperty Name="nm_forn" ColumnName="nm_forn" />
+                <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_funcionario">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_funcionario">
+              <MappingFragment StoreEntitySet="tb_funcionario">
+                <ScalarProperty Name="vl_va" ColumnName="vl_va" />
+                <ScalarProperty Name="bl_va" ColumnName="bl_va" />
+                <ScalarProperty Name="vl_vt" ColumnName="vl_vt" />
+                <ScalarProperty Name="bl_vt" ColumnName="bl_vt" />
+                <ScalarProperty Name="est_civil" ColumnName="est_civil" />
+                <ScalarProperty Name="uf_estado" ColumnName="uf_estado" />
+                <ScalarProperty Name="ds_genero" ColumnName="ds_genero" />
+                <ScalarProperty Name="dt_contratacao" ColumnName="dt_contratacao" />
+                <ScalarProperty Name="ds_setor" ColumnName="ds_setor" />
+                <ScalarProperty Name="qt_salario" ColumnName="qt_salario" />
+                <ScalarProperty Name="nm_cargo" ColumnName="nm_cargo" />
+                <ScalarProperty Name="ds_email" ColumnName="ds_email" />
+                <ScalarProperty Name="ds_cel" ColumnName="ds_cel" />
+                <ScalarProperty Name="ds_tel" ColumnName="ds_tel" />
+                <ScalarProperty Name="ds_cep" ColumnName="ds_cep" />
+                <ScalarProperty Name="nu_funcionario" ColumnName="nu_funcionario" />
+                <ScalarProperty Name="end_funcionario" ColumnName="end_funcionario" />
+                <ScalarProperty Name="ds_cpf" ColumnName="ds_cpf" />
+                <ScalarProperty Name="ds_rg" ColumnName="ds_rg" />
+                <ScalarProperty Name="dt_nasc" ColumnName="dt_nasc" />
+                <ScalarProperty Name="nm_funcionario" ColumnName="nm_funcionario" />
+                <ScalarProperty Name="id_funcionario" ColumnName="id_funcionario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_login">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_login">
+              <MappingFragment StoreEntitySet="tb_login">
+                <ScalarProperty Name="img_usuario" ColumnName="img_usuario" />
+                <ScalarProperty Name="ds_tipo" ColumnName="ds_tipo" />
+                <ScalarProperty Name="ds_senha" ColumnName="ds_senha" />
+                <ScalarProperty Name="nm_usuario" ColumnName="nm_usuario" />
+                <ScalarProperty Name="nm_email" ColumnName="nm_email" />
+                <ScalarProperty Name="id_login" ColumnName="id_login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_pagamento">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_pagamento">
+              <MappingFragment StoreEntitySet="tb_pagamento">
+                <ScalarProperty Name="horaextraareceber" ColumnName="horaextraareceber" />
+                <ScalarProperty Name="horasextra" ColumnName="horasextra" />
+                <ScalarProperty Name="valor_liquido" ColumnName="valor_liquido" />
+                <ScalarProperty Name="total_desconto" ColumnName="total_desconto" />
+                <ScalarProperty Name="desc_falta" ColumnName="desc_falta" />
+                <ScalarProperty Name="nu_falta" ColumnName="nu_falta" />
+                <ScalarProperty Name="VT" ColumnName="VT" />
+                <ScalarProperty Name="VA" ColumnName="VA" />
+                <ScalarProperty Name="FGTS" ColumnName="FGTS" />
+                <ScalarProperty Name="INSS" ColumnName="INSS" />
+                <ScalarProperty Name="salario_base" ColumnName="salario_base" />
+                <ScalarProperty Name="salario" ColumnName="salario" />
+                <ScalarProperty Name="dt_mes" ColumnName="dt_mes" />
+                <ScalarProperty Name="função" ColumnName="função" />
+                <ScalarProperty Name="nm_funcionario" ColumnName="nm_funcionario" />
+                <ScalarProperty Name="id_funcionario" ColumnName="id_funcionario" />
+                <ScalarProperty Name="id_pagamento" ColumnName="id_pagamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_prestador">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_prestador">
+              <MappingFragment StoreEntitySet="tb_prestador">
+                <ScalarProperty Name="uf_estado" ColumnName="uf_estado" />
+                <ScalarProperty Name="bt_ativo" ColumnName="bt_ativo" />
+                <ScalarProperty Name="ds_genero" ColumnName="ds_genero" />
+                <ScalarProperty Name="nm_cargo" ColumnName="nm_cargo" />
+                <ScalarProperty Name="ds_email" ColumnName="ds_email" />
+                <ScalarProperty Name="ds_cel" ColumnName="ds_cel" />
+                <ScalarProperty Name="ds_tel" ColumnName="ds_tel" />
+                <ScalarProperty Name="ds_cep" ColumnName="ds_cep" />
+                <ScalarProperty Name="nu_prestador" ColumnName="nu_prestador" />
+                <ScalarProperty Name="end_prestador" ColumnName="end_prestador" />
+                <ScalarProperty Name="ds_cpf" ColumnName="ds_cpf" />
+                <ScalarProperty Name="ds_rg" ColumnName="ds_rg" />
+                <ScalarProperty Name="dt_nasc" ColumnName="dt_nasc" />
+                <ScalarProperty Name="nm_prestador" ColumnName="nm_prestador" />
+                <ScalarProperty Name="id_login" ColumnName="id_login" />
+                <ScalarProperty Name="id_prestador" ColumnName="id_prestador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_servico">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_servico">
+              <MappingFragment StoreEntitySet="tb_servico">
+                <ScalarProperty Name="qt_estrela" ColumnName="qt_estrela" />
+                <ScalarProperty Name="ds_setor" ColumnName="ds_setor" />
+                <ScalarProperty Name="dt_servico" ColumnName="dt_servico" />
+                <ScalarProperty Name="vl_servico" ColumnName="vl_servico" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_prestador" ColumnName="id_prestador" />
+                <ScalarProperty Name="id_servico" ColumnName="id_servico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_suprimento">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.tb_suprimento">
+              <MappingFragment StoreEntitySet="tb_suprimento">
+                <ScalarProperty Name="dt_compra" ColumnName="dt_compra" />
+                <ScalarProperty Name="vl_preco" ColumnName="vl_preco" />
+                <ScalarProperty Name="qt_produtos" ColumnName="qt_produtos" />
+                <ScalarProperty Name="nm_produto" ColumnName="nm_produto" />
+                <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+                <ScalarProperty Name="id_suprimento" ColumnName="id_suprimento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_fluxo_caixa">
+            <EntityTypeMapping TypeName="db_a4e410_fastModel.vw_fluxo_caixa">
+              <MappingFragment StoreEntitySet="vw_fluxo_caixa">
+                <ScalarProperty Name="tp_operacao" ColumnName="tp_operacao" />
+                <ScalarProperty Name="vl_operacao" ColumnName="vl_operacao" />
+                <ScalarProperty Name="dt_pagamento" ColumnName="dt_pagamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
